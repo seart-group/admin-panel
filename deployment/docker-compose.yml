@@ -1,0 +1,19 @@
+version: '3.9'
+name: 'admin-panel'
+
+services:
+
+  admin-panel:
+    container_name: admin-panel
+    build:
+      context: ../
+      dockerfile: deployment/Dockerfile
+    image: 'admin-panel:latest'
+    restart: "always"
+    ports: [ "7777:8080" ]
+    networks:
+      - default
+
+networks:
+  default:
+    name: admin-panel-network
