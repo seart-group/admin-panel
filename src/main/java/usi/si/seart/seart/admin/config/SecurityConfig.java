@@ -1,6 +1,10 @@
 package usi.si.seart.seart.admin.config;
 
 import de.codecentric.boot.admin.server.web.client.HttpHeadersProvider;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,16 +58,12 @@ public class SecurityConfig {
         return new CredentialsConfig();
     }
 
+    @Getter(value = AccessLevel.PRIVATE)
+    @NoArgsConstructor(access = AccessLevel.PRIVATE)
+    @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
     @ConfigurationProperties("admin")
     public static final class CredentialsConfig {
 
-        private final Map<String, String> credentials = new HashMap<>();
-
-        private CredentialsConfig() {
-        }
-
-        public Map<String, String> getCredentials() {
-            return credentials;
-        }
+        Map<String, String> credentials = new HashMap<>();
     }
 }
