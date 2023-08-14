@@ -55,7 +55,7 @@ public class SecurityConfig {
     }
 
     @ConfigurationProperties("admin")
-    private static class CredentialsConfig {
+    public static final class CredentialsConfig {
 
         private final Map<String, String> credentials = new HashMap<>();
 
